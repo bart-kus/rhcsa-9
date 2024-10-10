@@ -41,13 +41,9 @@ To set password options for John.
 ``chage john``
 
 
-[root@server2 ~]# chage johny
-Changing the aging information for johny
-Enter the new value, or press ENTER for the default
 
-        Minimum Password Age [0]: 2y
-chage: error changing fields
 [root@server2 ~]# chage johny
+
 Changing the aging information for johny
 Enter the new value, or press ENTER for the default
 
