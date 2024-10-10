@@ -9,6 +9,7 @@ useradd johny -g kilo - adding johny with the suplementary grup kilo (groupadd k
 
 [root@server2 ~]# id johny
 uid=1241(johny) gid=1245(kilo) groups=1245(kilo)
+
 file created by johny:
 [johny@server2 ~]$ mkdir jj
 [johny@server2 ~]$ ls -l
