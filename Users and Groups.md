@@ -4,7 +4,8 @@
 
 ### Adding users
 
-``useradd john`` to create user john. 
+``useradd john`` to create user john.
+
 useradd johny -g kilo - adding johny with the suplementary grup kilo (groupadd kilo first)
 
 [root@server2 ~]# id johny
