@@ -4,7 +4,18 @@
 
 ### Adding users
 
-``useradd john`` to create user john.
+``useradd john`` to create user john. 
+useradd johny -g kilo - adding johny with the suplementary grup kilo (groupadd kilo first)
+
+[root@server2 ~]# id johny
+uid=1241(johny) gid=1245(kilo) groups=1245(kilo)
+file created by johny:
+[johny@server2 ~]$ mkdir jj
+[johny@server2 ~]$ ls -l
+total 0
+drwxr-xr-x. 2 johny kilo 6 Oct  9 23:00 jj
+
+
 Checkout useradd --help to see more available options.
 
 Files in **/etc/default/useradd** apply to useradd only.  
