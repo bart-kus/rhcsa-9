@@ -40,6 +40,55 @@ To view password settings for user John.
 To set password options for John.
 ``chage john``
 
+
+[root@server2 ~]# chage johny
+Changing the aging information for johny
+Enter the new value, or press ENTER for the default
+
+        Minimum Password Age [0]: 2y
+chage: error changing fields
+[root@server2 ~]# chage johny
+Changing the aging information for johny
+Enter the new value, or press ENTER for the default
+
+        Minimum Password Age [0]: 2
+        Maximum Password Age [99999]: 9
+        Last Password Change (YYYY-MM-DD) [2024-10-09]:
+        Password Expiration Warning [7]: 8
+        Password Inactive [-1]: 5
+        Account Expiration Date (YYYY-MM-DD) [-1]: 2024-12-24
+
+
+The chage command is used to change the password aging information of a user in Linux. Here's what each of the fields in your command output means:
+
+1. Minimum Password Age [0]: 2
+This specifies the minimum number of days a user must wait before changing their password after it has been set or changed.
+In this case, Johny will not be able to change his password until 2 days have passed since the last change.
+2. Maximum Password Age [99999]: 9
+This specifies the maximum number of days a password can be used before the user is required to change it.
+Here, the maximum password age is set to 9 days, meaning Johny will need to change his password every 9 days.
+3. Last Password Change (YYYY-MM-DD) [2024-10-09]:
+This is the date when the user's password was last changed. You can either press Enter to accept the default value (current date: 2024-10-09) or enter a different date.
+The value indicates that Johny’s password was last changed on October 9, 2024.
+4. Password Expiration Warning [7]: 8
+This is the number of days before the password expires that the user will receive a warning.
+You’ve set this to 8 days, meaning Johny will be warned 8 days before his password expires (on the 1st day after setting the password, he'll get a warning).
+5. Password Inactive [-1]: 5
+This defines the number of days after the password has expired during which the user can still log in without changing their password.
+A value of 5 means Johny can still log in and use the system for 5 days after the password expires, but after that, the account will be locked until the password is changed.
+A value of -1 would mean there is no grace period.
+6. Account Expiration Date (YYYY-MM-DD) [-1]: 2024-12-24
+This is the date on which the user account will be disabled.
+Here, the account will expire on December 24, 2024. After this date, Johny will no longer be able to log in, regardless of the password status.
+A value of -1 means the account would never expire.
+In summary, after the above changes:
+
+Johny will have to wait 2 days to change his password after setting it.
+His password will expire after 9 days.
+He will be warned 8 days before his password expires.
+After the password expires, he will have 5 days to log in before being locked out.
+His account will be disabled on December 24, 2024.
+
 You can also view the password options in **/etc/shadow**. You can see if the user account is locked out. The second field is the password hash. If the password hash starts with **!** The user account is locked out. As you can see, the user John is locked out.
 
 ![The shadow file](pictures/shadow.png)
