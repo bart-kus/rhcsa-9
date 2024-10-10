@@ -248,6 +248,14 @@ You can use ``newgrp sales`` to change the primary group to sales. This is only 
 
 Use ``vigr`` to change the **/etc/groups** file.  
 
+## change the user suplementary group:
+
+Change the User’s GID: Once the group with GID 1245 exists, you can change the user's primary group to that GID:
+
+sudo usermod -g 1245 username
+
+if user is assignet to more that one gorup but you want to change the suplementary group you need to check ``id`` of the user and find the number of lets say third gropup ``groups=1246(kilos)``
+
 ## SUDO 
 
 To have sudo rights the user needs to be a part of the wheel group.
