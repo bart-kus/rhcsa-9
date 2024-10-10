@@ -256,7 +256,7 @@ sudo usermod -g 1245 username
 
 if user is assignet to more that one gorup but you want to change the suplementary group you need to check ``id`` of the user and find the number of lets say third gropup ``groups=1246(kilos)``
 
-then ownership on second group will be changed
+then ownership on second group will be changed -rw-r--r--. 1 johny kilo 0 Oct  9 23:36 aa
 
 
 ## SUDO 
