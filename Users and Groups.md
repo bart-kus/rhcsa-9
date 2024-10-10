@@ -109,6 +109,118 @@ See previous logged in users.
 See currently logged in users.
 ``w`` or ``who``
 
+In RHCSA 9, locking a user account can be done in a few ways using different commands. Locking a user prevents them from logging in to the system without deleting the account. Here's how you can lock a user account in RHEL 9:
+
+1. Using passwd Command
+The easiest and most common way to lock a user account is by using the passwd command with the -l (lock) option.
+
+bash
+Copy code
+sudo passwd -l username
+For example, to lock the user johny:
+
+bash
+Copy code
+sudo passwd -l johny
+This will place a ! character in front of the encrypted password in /etc/shadow, which effectively disables the password and prevents the user from logging in.
+
+2. Using usermod Command
+Another way to lock a user account is by using the usermod command with the -L (lock) option.
+
+bash
+Copy code
+sudo usermod -L username
+Example:
+
+bash
+Copy code
+sudo usermod -L johny
+This command also works by placing a ! in front of the encrypted password in /etc/shadow.
+
+3. Temporarily Locking with chage Command
+The chage command can also be used to set the account expiration date to a past date, effectively locking the account.
+
+bash
+Copy code
+sudo chage -E 0 username
+Example:
+
+bash
+Copy code
+sudo chage -E 0 johny
+This will set the expiration date of the user johny to "0", meaning the account is expired and can't be used to log in.
+
+4. Manually Editing /etc/shadow File
+As a last resort, you can manually edit the /etc/shadow file to lock the account.
+
+Open the /etc/shadow file with a text editor:
+
+bash
+Copy code
+sudo vi /etc/shadow
+Locate the user’s entry (e.g., johny) and place a ! in front of the hashed password:
+
+perl
+Copy code
+johny:!$6$abcdefgh....:...
+Verifying the Account Lock Status
+You can verify if the account is locked by checking the user status with the passwd -S command:
+
+bash
+Copy code
+passwd -S johny
+If the output shows L (Locked), the account is locked.
+
+Unlocking the Account
+To unlock a user account, you can use:
+
+passwd -u username
+usermod -U username
+For example:
+
+bash
+Copy code
+sudo passwd -u johny
+or
+
+bash
+Copy code
+sudo usermod -U johny
+These methods should cover how to lock a user account in RHEL 9 (RHCSA 9).
+
+
+usermod -L john
+ChatGPT said:
+ChatGPT
+The command usermod -L john is used to lock the user account named john in Linux. When you run this command, it adds a ! in front of the user's encrypted password in the /etc/shadow file, preventing the user from logging in with their password.
+
+Breakdown of the Command:
+usermod: The command to modify user account settings.
+-L: Option to lock the user account by disabling the password.
+john: The username of the account you want to lock.
+What Happens:
+The user's password is "disabled," meaning they won't be able to log in using their password until the account is unlocked.
+Other login methods (like SSH keys) may still work unless you disable them separately.
+The lock does not delete or disable the account itself, it only prevents password-based login.
+Example:
+bash
+Copy code
+sudo usermod -L john
+Verifying the Lock:
+You can check if the user is locked by using the following command:
+
+bash
+Copy code
+passwd -S john
+If the user is locked, the output will show L (Locked).
+Unlocking the Account:
+To unlock the account later, you can use the -U option:
+
+bash
+Copy code
+sudo usermod -U john
+This removes the ! from the /etc/shadow file and allows the user to log in with their password again.
+
 ### User file management
 
 **/etc/login.defs**: Used for default settings like UID settings, passwd default settings, and other things.
