@@ -96,13 +96,13 @@ When you run fdisk, you'll see a command prompt with options to create, delete, 
 4. Create a New Partition:
 To create a new partition:
 
-Press n to create a new partition.
-Select the partition type:
-p for primary partition (usually up to 4 primary partitions).
-e for an extended partition.
-Choose the partition number (usually defaults to the next available number).
-Specify the first sector (press Enter to use the default, which is recommended).
-Specify the last sector or size of the partition (e.g., +10G to create a 10 GB partition).
+1. Press n to create a new partition.
+2. Select the partition type:
+- p for primary partition (usually up to 4 primary partitions).
+- e for an extended partition.
+3. Choose the partition number (usually defaults to the next available number).
+4. Specify the first sector (press Enter to use the default, which is recommended).
+5. Specify the last sector or size of the partition (e.g., +10G to create a 10 GB partition).
 Example interaction:
 
 
@@ -139,11 +139,11 @@ Replace /dev/sdX1 with your newly created partition (like /dev/sda1).
 8. Mount the Partition:
 To mount the new partition, create a mount point and mount it.
 
-Create a directory to mount the partition:
+1. Create a directory to mount the partition:
 
 
 ``sudo mkdir /mnt/new_partition``
-Mount the partition:
+2. Mount the partition:
 
 
 ``sudo mount /dev/sdX1 /mnt/new_partition``
