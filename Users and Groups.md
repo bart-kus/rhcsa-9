@@ -248,6 +248,8 @@ You can use ``newgrp sales`` to change the primary group to sales. This is only 
 
 Use ``vigr`` to change the **/etc/groups** file.  
 
+See all groups `cat /etc/group`
+
 ## change the user suplementary group:
 
 Change the User’s GID: Once the group with GID 1245 exists, you can change the user's primary group to that GID:
