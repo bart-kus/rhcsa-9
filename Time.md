@@ -99,3 +99,26 @@ After making changes, you can verify the current date, time, and time zone setti
 
 ``timedatectl``
 This will show the updated settings, including the current date, time, time zone, and NTP status.
+
+
+## Steps to Set Date and Time When NTP is Enabled:
+Disable NTP Synchronization: Use the following command to disable automatic time synchronization:
+
+``sudo timedatectl set-ntp false``
+Set the Date: Now, you can set the date using:
+
+
+``sudo timedatectl set-time 2024-10-14``
+(Optional) Set the Time: If you also want to set the time, you can do it in the same or a separate command. For example, to set the time to 10:30 AM:
+
+
+``sudo timedatectl set-time "2024-10-14 10:30:00"``
+(Optional) Re-enable NTP Synchronization: After manually setting the date and time, you may want to re-enable NTP to keep the time synchronized with NTP servers:
+
+
+``sudo timedatectl set-ntp true``
+Verify the Changes:
+After making changes, verify the date, time, and NTP status:
+
+
+``timedatectl``
