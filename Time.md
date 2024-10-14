@@ -45,7 +45,7 @@ This will show the current system time, local time, time zone, and if NTP (Netwo
 To change the system date, use the following command:
 
 
-``sudo timedatectl set-time YYYY-MM-DD```
+``sudo timedatectl set-time YYYY-MM-DD``
 For example, to set the date to October 9, 2024:
 
 
