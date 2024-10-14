@@ -41,7 +41,7 @@ First, check the current date, time, and time synchronization settings:
 ``timedatectl``
 This will show the current system time, local time, time zone, and if NTP (Network Time Protocol) synchronization is enabled.
 
-#2. Change Date
+#### 2. Change Date
 To change the system date, use the following command:
 
 
@@ -51,7 +51,7 @@ For example, to set the date to October 9, 2024:
 
 ``sudo timedatectl set-time 2024-10-09``
 
-3. #Change Time
+#### 3. #Change Time
 To set the system time, use:
 
 ``sudo timedatectl set-time HH:MM:SS``
@@ -60,7 +60,7 @@ For example, to set the time to 15:30:00 (3:30 PM):
 
 ``sudo timedatectl set-time 15:30:00``
 
-# 4. Set Both Date and Time Simultaneously
+#### 4. Set Both Date and Time Simultaneously
 You can also set both date and time in a single command:
 
 
@@ -70,7 +70,7 @@ For example, to set the date to October 9, 2024, and the time to 15:30:00:
 
 ``sudo timedatectl set-time "2024-10-09 15:30:00"``
 
-#5. Change Time Zone
+#### 5. Change Time Zone
 To change the system’s time zone, first list all available time zones:
 
 ``timedatectl list-timezones``
@@ -83,7 +83,7 @@ For example, to set the time zone to New York:
 
 
 ``sudo timedatectl set-timezone America/New_York``
-#6. Enable or Disable NTP Synchronization
+#### 6. Enable or Disable NTP Synchronization
 To ensure your system's time is automatically synchronized with NTP servers, you can enable NTP:
 
 
@@ -93,7 +93,7 @@ To disable NTP synchronization (if you want to manually set the date and time):
 
 ``sudo timedatectl set-ntp false``
 
-#7. Verify Changes
+#### 7. Verify Changes
 After making changes, you can verify the current date, time, and time zone settings:
 
 
