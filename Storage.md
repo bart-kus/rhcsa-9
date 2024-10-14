@@ -96,13 +96,13 @@ When you run fdisk, you'll see a command prompt with options to create, delete, 
 4. Create a New Partition:
 To create a new partition:
 
-1. Press n to create a new partition.
-2. Select the partition type:
+- Press n to create a new partition.
+- Select the partition type:
 - p for primary partition (usually up to 4 primary partitions).
 - e for an extended partition.
-3. Choose the partition number (usually defaults to the next available number).
-4. Specify the first sector (press Enter to use the default, which is recommended).
-5. Specify the last sector or size of the partition (e.g., +10G to create a 10 GB partition).
+- Choose the partition number (usually defaults to the next available number).
+- Specify the first sector (press Enter to use the default, which is recommended).
+- Specify the last sector or size of the partition (e.g., +10G to create a 10 GB partition).
 Example interaction:
 
 
