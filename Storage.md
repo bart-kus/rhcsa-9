@@ -139,11 +139,11 @@ Replace /dev/sdX1 with your newly created partition (like /dev/sda1).
 8. Mount the Partition:
 To mount the new partition, create a mount point and mount it.
 
-1. Create a directory to mount the partition:
+- Create a directory to mount the partition:
 
 
 ``sudo mkdir /mnt/new_partition``
-2. Mount the partition:
+- Mount the partition:
 
 
 ``sudo mount /dev/sdX1 /mnt/new_partition``
