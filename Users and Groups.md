@@ -272,3 +272,35 @@ To see current members of the wheel group.
 Let's add John to the wheel group. ``usermod -aG wheel john``
 
 Let's remove John from the wheel group. ``gpasswd -d john wheel``
+
+
+Secon method:
+
+To add the user student to the sudoers file on RHEL 9, follow these steps:
+
+Method 2: Modify the /etc/sudoers file
+Switch to the root user (or use an account with sudo privileges):
+
+
+``su -``
+Alternatively, if you're already using a sudo user:
+
+
+sudo -i
+Open the /etc/sudoers file using the visudo command. This command ensures that the file is checked for syntax errors before saving:
+
+
+``visudo``
+Add the following line to grant student sudo privileges. Look for the section that has:
+
+
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+Below that line, add the following to give the user student sudo access:
+
+
+student ALL=(ALL)       ALL
+Save and exit:
+
+If using the default vi editor, press Esc, then type :wq and hit Enter to save and exit.
+If you made an error, visudo will alert you and prevent the file from being saved with invalid synt
