@@ -87,12 +87,12 @@ Replace /dev/sdX with the appropriate disk, such as /dev/sda (do not specify a p
 3. Enter fdisk Command Mode:
 When you run fdisk, you'll see a command prompt with options to create, delete, and manage partitions. Some important commands are:
 
-m: Show help with available commands.
-p: Print the partition table (to view existing partitions).
-n: Create a new partition.
-d: Delete a partition.
-w: Write changes and exit.
-q: Quit without saving changes.
+-- m: Show help with available commands.
+-- p: Print the partition table (to view existing partitions).
+-- n: Create a new partition.
+-- d: Delete a partition.
+-- w: Write changes and exit.
+-- q: Quit without saving changes.
 4. Create a New Partition:
 To create a new partition:
 
