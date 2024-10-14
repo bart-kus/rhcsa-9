@@ -3,6 +3,7 @@
 ## Common commands
 
 ``systemctl status``
+The systemctl status command provides information about the status of a service or unit in a Linux system that uses systemd
 
 List all services
 ``systemctl list-units -t service``
