@@ -83,6 +83,8 @@ This command will show when the timer was last triggered and when it is schedule
 
 ``sudo systemctl stop myscript.timer``
 ``sudo systemctl disable myscript.timer``\ 
+
+
 4. Using ``OnBootSec`` and ``OnUnitActiveSec`` for Intervals\ 
 Instead of ``OnCalendar``, you can use monotonic timers like ``OnBootSec`` and ``OnUnitActiveSec`` to schedule tasks at intervals relative to boot time or the last activation.\ 
 
