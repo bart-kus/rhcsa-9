@@ -38,14 +38,14 @@ The timer unit triggers the service unit based on a schedule, event, or conditio
 Suppose you want to run a script located at /usr/local/bin/myscript.sh every day at midnight.
 
 Step 1: Create the Service Unit
-The service unit defines what task will be executed. Create a file called /etc/systemd/system/myscript.service:\
+The service unit defines what task will be executed. Create a file called /etc/systemd/system/myscript.service:\ 
 
 
 [Unit]
 Description=Run my custom script
 
 [Service]
-ExecStart=/usr/local/bin/myscript.sh\ 
+ExecStart=/usr/local/bin/myscript.sh\  
 Step 2: Create the Timer Unit
 The timer unit defines when the service should run. Create a file called /etc/systemd/system/myscript.timer:
 
