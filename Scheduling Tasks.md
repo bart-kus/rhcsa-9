@@ -115,3 +115,84 @@ Summary:
 For the RHCSA (EX200) exam: Focus on systemd timers, as they are now the preferred method of scheduling tasks in RHEL 9.
 Legacy systems: For real-world environments running older RHEL versions, it's still important to know crond. However, be aware that systemd timers are the primary method in modern RHEL systems.
 By practicing both cron and systemd timers, you’ll be ready for both legacy systems and modern RHEL 9 environments.
+
+
+
+
+
+Step-by-Step Guide to Create a Systemd Timer
+Step 1: Create the Service File
+Create the service file: This file will define the action to be taken when the timer is triggered. Use your preferred text editor (e.g., nano, vim) to create the service file.
+
+bash
+Copy code
+sudo nano /etc/systemd/system/logsecure.service
+Add the following content to the service file:
+
+ini
+Copy code
+[Unit]
+Description=Collect logs from /var/log/secure to /tmp
+
+[Service]
+Type=oneshot
+ExecStart=/bin/cp /var/log/secure /tmp/secure-$(date +%F).log
+Description: A brief description of what the service does.
+Type=oneshot: This indicates that the service is short-lived and will complete its task and exit.
+ExecStart: The command to execute. Here, we use cp to copy the /var/log/secure file to /tmp, appending the current date to the filename.
+Save and exit the editor. In nano, you can do this by pressing CTRL + O to save and CTRL + X to exit.
+
+Step 2: Create the Timer File
+Create the timer file: Now, you will create a timer file that schedules the execution of the service. Again, use your preferred text editor.
+
+bash
+Copy code
+sudo nano /etc/systemd/system/logsecure.timer
+Add the following content to the timer file:
+
+ini
+Copy code
+[Unit]
+Description=Timer for logsecure service
+
+[Timer]
+OnCalendar=*-*-* 14:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+OnCalendar: This specifies when the timer should activate. The *-*-* 14:00:00 format indicates that the timer will run every day at 2 PM.
+Persistent: If the timer is missed (e.g., the system is powered off), it will run as soon as the system is back on.
+WantedBy: Indicates that this timer should be part of the timers.target, which is the standard target for timers.
+Save and exit the editor.
+
+Step 3: Reload Systemd and Enable the Timer
+Reload the systemd daemon: This is necessary to recognize the new service and timer files you created.
+
+bash
+Copy code
+sudo systemctl daemon-reload
+Enable the timer: This command will enable the timer to start at boot time.
+
+bash
+Copy code
+sudo systemctl enable logsecure.timer
+Start the timer: This command will start the timer immediately.
+
+bash
+Copy code
+sudo systemctl start logsecure.timer
+Step 4: Verify the Timer
+Check the status of the timer:
+
+bash
+Copy code
+systemctl status logsecure.timer
+This command will provide information about the timer, including when it will next trigger.
+
+Check the logs: After the timer runs (the next day at 2 PM), you can verify that the log file was created in the /tmp directory.
+
+bash
+Copy code
+ls -l /tmp/secure-*.log
+This command will list any log files created by the service.
