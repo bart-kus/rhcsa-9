@@ -23,15 +23,15 @@ You're absolutely right. In RHEL 9 and newer versions, systemd timers have large
 Understanding systemd Timers
 Systemd timers offer several advantages over traditional cron:
 
-Greater flexibility: They can trigger services based on events, not just time.
-Better integration: Systemd timers are managed by the systemd process, providing better logging, monitoring, and control.
-Precision: Timers have more granular control over intervals, including millisecond accuracy and monotonic timers.
+- Greater flexibility: They can trigger services based on events, not just time.
+- Better integration: Systemd timers are managed by the systemd process, providing better logging, monitoring, and control.
+- Precision: Timers have more granular control over intervals, including millisecond accuracy and monotonic timers.
 How to Work with systemd Timers
 1. Basic Components of a Timer
 A systemd timer consists of two units:
 
-A service unit (.service) that defines the action to be performed.
-A timer unit (.timer) that defines when the action should be performed.
+- A service unit (.service) that defines the action to be performed.
+- A timer unit (.timer) that defines when the action should be performed.
 The timer unit triggers the service unit based on a schedule, event, or condition.
 
 2. Creating a Systemd Timer
@@ -41,26 +41,26 @@ Step 1: Create the Service Unit
 The service unit defines what task will be executed. Create a file called /etc/systemd/system/myscript.service:\ 
 
 
-[Unit]
-Description=Run my custom script
+#### [Unit]
+#### Description=Run my custom script
 
-[Service]
-ExecStart=/usr/local/bin/myscript.sh\  
+#### [Service]
+#### ExecStart=/usr/local/bin/myscript.sh\  
 Step 2: Create the Timer Unit
-The timer unit defines when the service should run. Create a file called /etc/systemd/system/myscript.timer:
+The timer unit defines when the service should run. Create a file called ``/etc/systemd/system/myscript.timer``:
 
 
-[Unit]
-Description=Run myscript daily at midnight
+#### [Unit]
+#### Description=Run myscript daily at midnight
 
-[Timer]
-OnCalendar=daily
-Persistent=true
+#### [Timer]
+#### OnCalendar=daily
+#### Persistent=true
 
-[Install]
-WantedBy=timers.target
-OnCalendar=daily: This triggers the timer daily at midnight (00:00). You can also use other calendar expressions like OnCalendar=weekly, OnCalendar=hourly, or custom times like OnCalendar=Mon *-*-* 12:00:00.
-Persistent=true: If the system was down when the timer was supposed to run, the service will run immediately after boot (as soon as possible).\
+#### [Install]
+#### WantedBy=timers.target
+- OnCalendar=daily: This triggers the timer daily at midnight (00:00). You can also use other calendar expressions like ``OnCalendar=weekly``, ``OnCalendar=hourly``, or custom times like ``OnCalendar=Mon *-*-* 12:00:00.``
+- Persistent=true: If the system was down when the timer was supposed to run, the service will run immediately after boot (as soon as possible).\
 
 Step 3: Enable and Start the Timer
 After creating both the service and timer files, enable and start the timer:
@@ -71,35 +71,33 @@ After creating both the service and timer files, enable and start the timer:
 ``sudo systemctl start myscript.timer``    # Start the timer now\ 
 3. Viewing and Managing Timers\ 
 You can view active timers and their status with:\ 
-
-
 ``systemctl list-timers``
 This command will show when the timer was last triggered and when it is scheduled to run next.
 
-To check the status of a specific timer:\ 
+- To check the status of a specific timer:\ 
 
 
-systemctl status myscript.timer
-To manually stop or disable a timer:
+``systemctl status myscript.timer``
+- To manually stop or disable a timer:
 
 
 ``sudo systemctl stop myscript.timer``
 ``sudo systemctl disable myscript.timer``\ 
-4. Using OnBootSec and OnUnitActiveSec for Intervals\ 
-Instead of OnCalendar, you can use monotonic timers like OnBootSec and OnUnitActiveSec to schedule tasks at intervals relative to boot time or the last activation.\ 
+4. Using ``OnBootSec`` and ``OnUnitActiveSec`` for Intervals\ 
+Instead of ``OnCalendar``, you can use monotonic timers like ``OnBootSec`` and ``OnUnitActiveSec`` to schedule tasks at intervals relative to boot time or the last activation.\ 
 
 For example, to run the script 5 minutes after boot and then every 30 minutes:\ 
 
 
-[Timer]
-OnBootSec=5min
-OnUnitActiveSec=30min\ 
+#### [Timer]
+#### OnBootSec=5min
+#### OnUnitActiveSec=30min\ 
 5. Logging and Troubleshooting\ 
 Systemd timers benefit from systemd's logging infrastructure:\ 
 
 You can check the logs for the service using journalctl:\ 
 
-journalctl -u myscript.service\  
+``journalctl -u myscript.service``\  
 - If the service failed, you'll see detailed logs and error messages here.
 #### Comparison: cron vs systemd Timers
 | Feature               | Cron                                   | Systemd Timers                                    |
