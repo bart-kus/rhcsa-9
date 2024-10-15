@@ -5,7 +5,7 @@
 ``dnf repolist`` \
 ``dnf provides htop`` or  \ --This command will search the available repositories and return the name of the package that contains htop. If htop is available from a repository or installed locally, it will show you the package name and version.
 ``dnf provides */Containerfile`` -- This command will look for any package that contains a file named Containerfile in any directory. The */ wildcard represents any directory path before the file name.
-``dnf search htop``To search for a package like htop using dnf, you would use the dnf search command. This command looks for packages whose name or description matches your search term\  
+``dnf search htop``To search for a package like htop using dnf, you would use the dnf search command. This command looks for packages whose name or description matches your search term\newline
 The output might look like this:
 
 
