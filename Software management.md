@@ -3,8 +3,8 @@
 ## Common DNF commands
 
 ``dnf repolist`` \
-``dnf provides htop`` or ``dnf provides */Containerfile`` \
-``dnf search htop`` \
+``dnf provides htop`` or ``dnf provides */Containerfile`` \ --This command will search the available repositories and return the name of the package that contains htop. If htop is available from a repository or installed locally, it will show you the package name and version.
+``dnf search htop`` \  
 ``dnf search all htop`` \
 ``dnf update`` The same as ``dnf upgrade``. The "update" is an alias for "upgrade". \
 ``dnf group install`` Only mandatory and default packages are installed, to see optional packages use ``dnf group info`` and to install with all optional packages do ``dnf group install --with-optional`` \
