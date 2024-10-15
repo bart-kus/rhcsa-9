@@ -15,9 +15,14 @@ htop.x86_64 : Interactive process viewer
 ========================== Name & Summary Matched: htop ========================
 htop.x86_64 : Interactive process viewer \
 ``sudo dnf install htop`` \
-``dnf search all htop`` \
-``dnf update`` The same as ``dnf upgrade``. The "update" is an alias for "upgrade". \
-``dnf group install`` Only mandatory and default packages are installed, to see optional packages use ``dnf group info`` and to install with all optional packages do ``dnf group install --with-optional`` \
+``dnf search all htop`` To search for all packages related to htop using the dnf search command, you can use the all keyword. This will search not only in package names but also in their descriptions and summaries for any match with the term htop \
+``dnf update`` The same as ``dnf upgrade``. The "update" is an alias for "upgrade".
+What Happens During dnf update:
+Checks for Updates: DNF will first check all enabled repositories for newer versions of installed packages.
+Resolves Dependencies: It ensures that all package dependencies are met and that no conflicts arise from the updates.
+Downloads Packages: If updates are available, DNF downloads the new versions of the packages.
+Installs the Updates: After downloading, it installs the updates, replacing the older versions of the packages \
+``dnf group install`` The dnf group install command is used to install a collection of related packages, grouped into package groups. Package groups are predefined sets of packages that serve a common purpose, such as "Development Tools", "Server with GUI", or "Security Tools". Instead of installing packages one by one, you can install a whole group with a single command. ``sudo dnf group install "<group_name>"`` Only mandatory and default packages are installed, to see optional packages use ``dnf group info`` and to install with all optional packages do ``dnf group install --with-optional`` \
 ``dnf group list`` See group packages that you can install. \
 ``dnf group list hidden`` Some groups are normally only installed through environment groups and not separately, and for that reason don't show when using ``dnf group list``
 ``dnf list installed`` List installed software on the machine.
